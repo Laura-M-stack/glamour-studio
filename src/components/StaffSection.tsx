@@ -1,4 +1,7 @@
 import React from "react";
+import mujer1 from "../assets/mujer1.jpg";
+import mujer2 from "../assets/mujer2.jpg";
+import mujer3 from "../assets/mujer3.jpg";
 
 type StaffMember = {
   name: string;
@@ -15,7 +18,7 @@ const STAFF: StaffMember[] = [
     roleTag: "Cabello",
     role: "Colorista & especialista en balayage",
     desc: "Amante de los cambios de look con degradé suave, brillo y movimiento. Te ayuda a encontrar el color ideal para tu piel.",
-    img: "images/mujer2.jpg",
+    img: mujer2,
     alt: "Estilista de cabello trabajando en el salón",
   },
   {
@@ -23,7 +26,7 @@ const STAFF: StaffMember[] = [
     roleTag: "Makeup",
     role: "Makeup artist social & novias",
     desc: "Especializada en maquillaje para eventos, fotos y video. Trabaja tu look según la ocasión, el vestido y tu estilo.",
-    img: "images/mujer1.jpg",
+    img: mujer1,
     alt: "Maquilladora aplicando maquillaje a una clienta",
   },
   {
@@ -31,12 +34,12 @@ const STAFF: StaffMember[] = [
     roleTag: "Nails",
     role: "Manicuría, nail art & spa de pies",
     desc: "Detallista al máximo, fan del nail art y las combinaciones fucsia, glitter y tonos pastel.",
-    img: "images/mujer3.jpg",
+    img: mujer3,
     alt: "Manicurista realizando nail art",
   },
 ];
 
-function StaffSection() {
+const StaffSection: React.FC = () => {
   return (
     <section className="section" id="equipo" aria-labelledby="equipo-title">
       <div className="section__header">
@@ -70,6 +73,6 @@ function StaffSection() {
       </div>
     </section>
   );
-}
+};
 
 export default StaffSection;
