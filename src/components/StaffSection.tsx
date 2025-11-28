@@ -15,7 +15,7 @@ const STAFF: StaffMember[] = [
     roleTag: "Cabello",
     role: "Colorista & especialista en balayage",
     desc: "Amante de los cambios de look con degradé suave, brillo y movimiento. Te ayuda a encontrar el color ideal para tu piel.",
-    img: "/images/mujer2.jpg",
+    img: "images/mujer2.jpg",
     alt: "Estilista de cabello trabajando en el salón",
   },
   {
@@ -23,7 +23,7 @@ const STAFF: StaffMember[] = [
     roleTag: "Makeup",
     role: "Makeup artist social & novias",
     desc: "Especializada en maquillaje para eventos, fotos y video. Trabaja tu look según la ocasión, el vestido y tu estilo.",
-    img: "/images/mujer1.jpg",
+    img: "images/mujer1.jpg",
     alt: "Maquilladora aplicando maquillaje a una clienta",
   },
   {
@@ -31,7 +31,7 @@ const STAFF: StaffMember[] = [
     roleTag: "Nails",
     role: "Manicuría, nail art & spa de pies",
     desc: "Detallista al máximo, fan del nail art y las combinaciones fucsia, glitter y tonos pastel.",
-    img: "/images/mujer3.jpg",
+    img: "images/mujer3.jpg",
     alt: "Manicurista realizando nail art",
   },
 ];
