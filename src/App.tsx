@@ -8,9 +8,7 @@ import Footer from "./components/Footer";
 import TurnosSection from "./components/TurnosSection";
 import Loader from "./components/Loader";
 
-
 const App: React.FC = () => {
-  const [theme, setTheme] = useState<ThemeMode>("light");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -18,19 +16,13 @@ const App: React.FC = () => {
     return () => clearTimeout(t);
   }, []);
 
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-
   if (isLoading) {
     return <Loader />;
   }
 
   return (
     <>
-      <Topbar theme={theme} onToggleTheme={() =>
-        setTheme((prev) => (prev === "light" ? "dark" : "light"))
-      } />
+      <Topbar />
       <main>
         <Hero />
         <ServicesSection />
