@@ -57,6 +57,18 @@ textarea {
     font-size: 1rem;
 }
 
+input,
+select,
+textarea {
+    color: var(--text-main);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: var(--text-main);
+}
+
+
 /* TOPBAR */
 
 .topbar {
@@ -205,7 +217,6 @@ textarea {
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    margin-bottom: 0.8rem;
     box-shadow: 4px 4px 0 #000;
 }
 
@@ -224,17 +235,12 @@ textarea {
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: #111;
+    margin-block: 1.8rem;
 }
 
 .hero__title-highlight {
-    display: inline-block;
-    padding: 0.1rem 0.5rem;
-    background: var(--accent-soft);
-    color: var(--text-main);
-    border-radius: 14px;
-    border: var(--border-thick) solid #000;
-    box-shadow: var(--shadow);
-    font-size: clamp(2.1rem, 4.1vw, 3rem);
+    color: var(--accent);
+    font-size: clamp(2.2rem, 4.2vw, 3.1rem);
 }
 
 .hero__subtitle {
@@ -242,13 +248,14 @@ textarea {
     line-height: 1.5;
     margin-bottom: 1.1rem;
     color: #333;
+    margin-block: 1.8rem;
 }
 
 .hero__meta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.6rem;
-    margin-bottom: 1.2rem;
+    margin-block: 1.8rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
 }
@@ -265,6 +272,7 @@ textarea {
     display: flex;
     flex-wrap: wrap;
     gap: 0.9rem;
+    margin-block: 1.8rem;
 }
 
 .btn {
@@ -316,7 +324,7 @@ textarea {
 .hero-photo-card {
     position: relative;
     width: 100%;
-    max-width: 310px;
+    max-width: 380px;
     border-radius: 40px;
     border: var(--border-thick) solid #000;
     background: #ffbde5;
@@ -344,11 +352,14 @@ textarea {
     padding: 0.3rem 0.7rem;
     border-radius: var(--radius-pill);
     border: var(--border-thick) solid #000;
-    background: #fff;
+    background: var(--card-bg);
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
     color: #111;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-weight: 600;
 }
 
 .hero-photo-card__label-dot {

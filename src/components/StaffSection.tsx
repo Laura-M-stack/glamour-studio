@@ -1,7 +1,7 @@
 import React from "react";
-import mujer1 from "../assets/mujer1.jpg";
-import mujer2 from "../assets/mujer2.jpg";
-import mujer3 from "../assets/mujer3.jpg";
+import mujer1 from "../assets/images/mujer1.jpg";
+import mujer2 from "../assets/images/mujer2.jpg";
+import mujer3 from "../assets/images/mujer3.jpg";
 
 type StaffMember = {
   name: string;

@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import heroCardImg from "../assets/images/hero-card-img.jpg";
+
 
 const WHATSAPP_URL =
     "https://wa.me/5491112345678?text=Hola%20Glamour%20Studio%2C%20quiero%20reservar%20un%20turno";
@@ -24,8 +26,8 @@ const Hero: React.FC = () => {
                         Turnos con brillo garantizado
                     </div>
                     <h1 className="hero__title" id="hero-title">
-                        Glamour
-                        <span className="hero__title-highlight">Studio</span>, tu look
+                        En
+                        <span className="hero__title-highlight"> Glamour Studio</span> tu look
                         es protagonista
                     </h1>
                     <p className="hero__subtitle">
@@ -65,8 +67,8 @@ const Hero: React.FC = () => {
                     <div className="hero-photo-card">
                         <div className="hero-photo-card__inner">
                             <img
-                                src="https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg?auto=compress&cs=tinysrgb&w=800"
-                                alt="Clienta sonriendo luego de un servicio de belleza"
+                                src={String(heroCardImg)}
+                                alt="Clienta en un salón de belleza"
                             />
                         </div>
                         <div className="hero-photo-card__label">
