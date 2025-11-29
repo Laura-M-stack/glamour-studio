@@ -49,8 +49,8 @@ const StaffSection: React.FC = () => {
             Un equipo de chicas expertas en tu look
           </h2>
           <p className="section__subtitle">
-            Cada integrante del equipo está especializada en un área distinta, para que cada
-            detalle esté cuidado.
+            Cada integrante del equipo está especializada en un área distinta,
+            para que cada detalle esté cuidado.
           </p>
         </div>
         <div className="section__tag">Equipo Glamour</div>

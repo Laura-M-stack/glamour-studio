@@ -1,21 +1,13 @@
 import React from "react";
-import type { ThemeMode } from "../App";
 
 const WHATSAPP_URL =
   "https://wa.me/5491112345678?text=Hola%20Glamour%20Studio%2C%20quiero%20reservar%20un%20turno";
 
-type TopbarProps = {
-  theme: ThemeMode;
-  onToggleTheme: () => void;
-};
-
-const Topbar: React.FC<TopbarProps> = ({ theme, onToggleTheme }) => {
+const Topbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
-  const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const handleToggleMenu = () => setIsMenuOpen((p) => !p);
   const handleNavClick = () => setIsMenuOpen(false);
-
-  const isDark = theme === "dark";
 
   return (
     <header className={`topbar ${isMenuOpen ? "topbar--menu-open" : ""}`} id="top">
@@ -28,7 +20,7 @@ const Topbar: React.FC<TopbarProps> = ({ theme, onToggleTheme }) => {
           </div>
         </div>
 
-        <nav className="nav" aria-label="Secciones principales">
+        <nav className="nav">
           <a className="nav__link nav__link--ghost" href="#servicios" onClick={handleNavClick}>
             Servicios
           </a>
@@ -37,9 +29,6 @@ const Topbar: React.FC<TopbarProps> = ({ theme, onToggleTheme }) => {
           </a>
           <a className="nav__link nav__link--ghost" href="#equipo" onClick={handleNavClick}>
             Staff
-          </a>
-          <a className="nav__link nav__link--ghost" href="#turnos" onClick={handleNavClick}>
-            Turnos
           </a>
           <a
             className="nav__link nav__cta"
@@ -52,20 +41,9 @@ const Topbar: React.FC<TopbarProps> = ({ theme, onToggleTheme }) => {
           </a>
         </nav>
 
-        <div className="topbar__actions">
-          <button
-            type="button"
-            className="topbar__theme-toggle"
-            onClick={onToggleTheme}
-            aria-label={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-          >
-            {isDark ? "☀️" : "🌙"}
-          </button>
-
-          <button className="topbar__menu-toggle" type="button" onClick={handleToggleMenu}>
-            Menú
-          </button>
-        </div>
+        <button className="topbar__menu-toggle" type="button" onClick={handleToggleMenu}>
+          Menú
+        </button>
       </div>
     </header>
   );

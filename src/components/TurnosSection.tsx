@@ -61,11 +61,8 @@ ${mensaje || "-"}
             <select
               value={servicio}
               onChange={(e) => setServicio(e.target.value)}
-              defaultValue=""
             >
-              <option value="" disabled>
-                Elegí una opción
-              </option>
+              <option value="">Elegí una opción</option>
               <option value="Corte & color">Corte &amp; color</option>
               <option value="Maquillaje social">Maquillaje social</option>
               <option value="Manos & pies">Manos &amp; pies</option>

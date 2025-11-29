@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 import TurnosSection from "./components/TurnosSection";
 import Loader from "./components/Loader";
 
-export type ThemeMode = "light" | "dark";
 
 const App: React.FC = () => {
   const [theme, setTheme] = useState<ThemeMode>("light");
