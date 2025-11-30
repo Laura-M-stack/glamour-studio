@@ -348,7 +348,7 @@ textarea::placeholder {
 .hero-photo-card__label {
     position: absolute;
     left: 1.4rem;
-    bottom: 0.8rem;
+    bottom: 4rem;
     padding: 0.3rem 0.7rem;
     border-radius: var(--radius-pill);
     border: var(--border-thick) solid #000;

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import heroCardImg from "../assets/images/hero-card-img.jpg";
+import heroCardImg from "../assets/images/hero-card-img.png";
 
 
 const WHATSAPP_URL =
