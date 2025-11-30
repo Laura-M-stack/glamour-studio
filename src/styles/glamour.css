@@ -61,6 +61,7 @@ input,
 select,
 textarea {
     color: var(--text-main);
+    background-color: var(--card-bg) !important;
 }
 
 input::placeholder,

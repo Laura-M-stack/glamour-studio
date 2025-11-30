@@ -63,9 +63,9 @@ ${mensaje || "-"}
               onChange={(e) => setServicio(e.target.value)}
             >
               <option value="">Elegí una opción</option>
-              <option value="Corte & color">Corte &amp; color</option>
+              <option value="Corte & color">Corte y color</option>
               <option value="Maquillaje social">Maquillaje social</option>
-              <option value="Manos & pies">Manos &amp; pies</option>
+              <option value="Manos & pies">Manos y pies</option>
               <option value="Otro">Otro</option>
             </select>
           </label>
@@ -85,7 +85,7 @@ ${mensaje || "-"}
               type="text"
               value={horario}
               onChange={(e) => setHorario(e.target.value)}
-              placeholder="Ej: tarde, 15 hs..."
+              placeholder="Ej: tarde, 15:00 hs..."
             />
           </label>
         </div>
