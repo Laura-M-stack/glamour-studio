@@ -1,38 +1,32 @@
-import React, { useEffect, useState } from "react";
+import { MotionConfig } from "framer-motion";
+import DemoBanner from "./components/DemoBanner";
 import Topbar from "./components/Topbar";
 import Hero from "./components/Hero";
+import Marquee from "./components/Marquee";
 import ServicesSection from "./components/ServicesSection";
-import TestimonialsSection from "./components/TestimonialsSection";
 import StaffSection from "./components/StaffSection";
-import Footer from "./components/Footer";
+import TestimonialsSection from "./components/TestimonialsSection";
 import TurnosSection from "./components/TurnosSection";
-import Loader from "./components/Loader";
+import Footer from "./components/Footer";
 
-const App: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const t = setTimeout(() => setIsLoading(false), 900);
-    return () => clearTimeout(t);
-  }, []);
-
-  if (isLoading) {
-    return <Loader />;
-  }
-
+export default function App() {
   return (
-    <>
+    // Honors the OS "reduce motion" setting for every framer-motion animation.
+    <MotionConfig reducedMotion="user">
+      <a className="skip-link" href="#contenido">
+        Saltar al contenido
+      </a>
+      <DemoBanner />
       <Topbar />
-      <main>
+      <main id="contenido">
         <Hero />
+        <Marquee />
         <ServicesSection />
-        <TestimonialsSection />
         <StaffSection />
+        <TestimonialsSection />
         <TurnosSection />
       </main>
       <Footer />
-    </>
+    </MotionConfig>
   );
-};
-
-export default App;
+}

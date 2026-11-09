@@ -1,52 +1,69 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import Icon from "./Icon";
+import { salon, whatsappUrl } from "../config/salon";
 
-const WHATSAPP_URL =
-  "https://wa.me/5491112345678?text=Hola%20Glamour%20Studio%2C%20quiero%20reservar%20un%20turno";
+const LINKS = [
+  { href: "#servicios", label: "Servicios" },
+  { href: "#equipo", label: "Staff" },
+  { href: "#opiniones", label: "Opiniones" },
+  { href: "#turnos", label: "Turnos" },
+];
 
-const Topbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+export default function Topbar() {
+  const [open, setOpen] = useState(false);
 
-  const handleToggleMenu = () => setIsMenuOpen((p) => !p);
-  const handleNavClick = () => setIsMenuOpen(false);
+  // Close the mobile menu with Escape or when the viewport grows past the breakpoint.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const mq = window.matchMedia("(min-width: 861px)");
+    const onResize = () => mq.matches && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    mq.addEventListener("change", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onResize);
+    };
+  }, [open]);
+
+  const close = () => setOpen(false);
 
   return (
-    <header className={`topbar ${isMenuOpen ? "topbar--menu-open" : ""}`} id="top">
+    <header className="topbar">
       <div className="topbar__inner">
-        <div className="brand">
-          <div className="brand__mark" aria-hidden="true" />
-          <div className="brand__text">
-            <span className="brand__name">Glamour Studio</span>
-            <span className="brand__tagline">Belleza &amp; estilo</span>
-          </div>
-        </div>
+        <a className="brand" href="#top" onClick={close}>
+          <span className="brand__mark" aria-hidden="true">
+            <Icon name="sparkles" size={18} />
+          </span>
+          <span className="brand__text">
+            <span className="brand__name">{salon.name}</span>
+            <span className="brand__tagline">{salon.tagline}</span>
+          </span>
+        </a>
 
-        <nav className="nav">
-          <a className="nav__link nav__link--ghost" href="#servicios" onClick={handleNavClick}>
-            Servicios
-          </a>
-          <a className="nav__link nav__link--ghost" href="#opiniones" onClick={handleNavClick}>
-            Opiniones
-          </a>
-          <a className="nav__link nav__link--ghost" href="#equipo" onClick={handleNavClick}>
-            Staff
-          </a>
-          <a
-            className="nav__link nav__cta"
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={handleNavClick}
-          >
-            WhatsApp
+        <button
+          className="topbar__toggle"
+          type="button"
+          aria-expanded={open}
+          aria-controls="main-nav"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          onClick={() => setOpen((v) => !v)}
+        >
+          <Icon name={open ? "close" : "menu"} size={22} />
+        </button>
+
+        <nav id="main-nav" className={`nav${open ? " nav--open" : ""}`} aria-label="Secciones">
+          {LINKS.map((l) => (
+            <a key={l.href} className="nav__link" href={l.href} onClick={close}>
+              {l.label}
+            </a>
+          ))}
+          <a className="nav__cta" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" onClick={close}>
+            <Icon name="whatsapp" size={18} />
+            Reservar
           </a>
         </nav>
-
-        <button className="topbar__menu-toggle" type="button" onClick={handleToggleMenu}>
-          Menú
-        </button>
       </div>
     </header>
   );
-};
-
-export default Topbar;
+}

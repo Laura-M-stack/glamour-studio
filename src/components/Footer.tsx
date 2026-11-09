@@ -1,55 +1,52 @@
-import React from "react";
+import Icon from "./Icon";
+import { HOURS_SUMMARY, salon, whatsappUrl } from "../config/salon";
 
-const WHATSAPP_URL =
-  "https://wa.me/5491112345678?text=Hola%20Glamour%20Studio%2C%20quiero%20reservar%20un%20turno";
+export default function Footer() {
+  const year = new Date().getFullYear();
 
-const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__inner">
         <div>
-          <div className="footer__title">Glamour Studio</div>
+          <p className="footer__title">{salon.name}</p>
           <p className="footer__text">
-            Un salón pensado para que vengas, te relajes y salgas con un look
-            que te represente. Hacemos turnos con reserva previa por WhatsApp.
+            Un salón pensado para que vengas, te relajes y salgas con un look que te represente. Turnos con
+            reserva previa.
           </p>
         </div>
 
         <div>
-          <div className="footer__title">Contacto</div>
+          <p className="footer__title">Contacto</p>
           <ul className="footer__list">
-            <li>Calle Ejemplo 123, Barrio Centro</li>
-            <li>Buenos Aires, Argentina</li>
-            <li>Tel: +54 9 11 1234-5678</li>
+            <li>{salon.address}</li>
+            <li>{salon.city}</li>
             <li>
-              <a
-                className="footer__pill"
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span>💬</span>
-                <span>Chatear por WhatsApp</span>
+              <a className="btn btn--yellow btn--small" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+                <Icon name="whatsapp" size={18} />
+                Escribinos por WhatsApp
               </a>
             </li>
           </ul>
         </div>
 
         <div>
-          <div className="footer__title">Horarios</div>
+          <p className="footer__title">Horarios</p>
           <ul className="footer__list">
-            <li>Lunes a viernes: 10:00 - 19:00</li>
-            <li>Sábados: 9:00 - 14:00</li>
-            <li>Domingos y feriados: cerrado</li>
+            {HOURS_SUMMARY.map((h) => (
+              <li key={h.days}>
+                {h.days}: {h.hours}
+              </li>
+            ))}
           </ul>
         </div>
       </div>
 
       <div className="footer__bottom">
-        <span>Hecho con 💖 por Laura Moyano · © 2025</span>
+        © {year} {salon.name} · Sitio diseñado y desarrollado por{" "}
+        <a href={salon.author.url} target="_blank" rel="noopener noreferrer">
+          {salon.author.name}
+        </a>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

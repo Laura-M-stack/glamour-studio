@@ -1,100 +1,77 @@
-import React from "react";
 import { motion } from "framer-motion";
-import heroCardImg from "../assets/images/hero-card-img.png";
+import Icon from "./Icon";
+import heroImg from "../assets/images/hero.webp";
+import { salon, whatsappUrl } from "../config/salon";
 
+export default function Hero() {
+  return (
+    <section className="hero" id="top" aria-labelledby="hero-title">
+      <motion.div
+        className="hero__text"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
+        <span className="tag tag--yellow tag--tilt">Turnos con brillo garantizado</span>
 
-const WHATSAPP_URL =
-    "https://wa.me/5491112345678?text=Hola%20Glamour%20Studio%2C%20quiero%20reservar%20un%20turno";
+        <h1 className="hero__title" id="hero-title">
+          En {salon.name} tu look es <span className="highlight">protagonista</span>
+        </h1>
 
-const Hero: React.FC = () => {
-    return (
-        <div className="hero-wrapper">
-            <motion.section
-                className="hero"
-                aria-labelledby="hero-title"
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-                <div className="hero-shape hero-shape--1" aria-hidden="true" />
-                <div className="hero-shape hero-shape--2" aria-hidden="true" />
-                <div className="hero-shape hero-shape--3" aria-hidden="true" />
+        <p className="hero__subtitle">
+          Cabello, maquillaje y uñas en un solo lugar, con especialistas en cada área para que salgas
+          sintiéndote increíble.
+        </p>
 
-                <div className="hero__inner">
-                    <div className="hero__eyebrow">
-                        <span className="hero__eyebrow-dot" />
-                        Turnos con brillo garantizado
-                    </div>
-                    <h1 className="hero__title" id="hero-title">
-                        En
-                        <span className="hero__title-highlight"> Glamour Studio</span> tu look
-                        es protagonista
-                    </h1>
-                    <p className="hero__subtitle">
-                        Cabello, maquillaje y uñas en un solo lugar. Un equipo de especialistas listo
-                        para que salgas sintiéndote increíble, sin dramas y con mucho estilo.
-                    </p>
+        <ul className="hero__pills" aria-label="Especialidades">
+          <li>Color y cortes</li>
+          <li>Makeup social</li>
+          <li>Nails y spa</li>
+        </ul>
 
-                    <div className="hero__meta">
-                        <span className="hero__meta-pill">Color &amp; cortes</span>
-                        <span className="hero__meta-pill">Makeup social</span>
-                        <span className="hero__meta-pill">Nails &amp; spa</span>
-                    </div>
-
-                    <div className="hero__actions">
-                        <a
-                            className="btn btn--whatsapp"
-                            href={WHATSAPP_URL}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <span className="btn__icon">💬</span>
-                            <span>Reservar por WhatsApp</span>
-                        </a>
-                        <a className="btn btn--outline" href="#servicios">
-                            <span className="btn__icon">✨</span>
-                            <span>Ver servicios</span>
-                        </a>
-                    </div>
-                </div>
-
-                <motion.div
-                    className="hero__media"
-                    initial={{ opacity: 0, scale: 0.9, rotate: 3 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-                >
-                    <div className="hero-photo-card">
-                        <div className="hero-photo-card__inner">
-                            <img
-                                src={String(heroCardImg)}
-                                alt="Clienta en un salón de belleza"
-                            />
-                        </div>
-                        <div className="hero-photo-card__label">
-                            <span className="hero-photo-card__label-dot" />
-                            <span>Look listo para brillar</span>
-                        </div>
-                    </div>
-
-                    <div className="hero-sticker hero-sticker--spark">
-                        <span className="hero-sticker__icon">⚡</span>
-                        <span>Full glam</span>
-                    </div>
-
-                    <div className="hero-sticker hero-sticker--heart">
-                        <span className="hero-sticker__icon">💖</span>
-                        <span>Clientes felices</span>
-                    </div>
-
-                    <div className="hero-sticker hero-sticker--tag">
-                        <span className="hero-sticker__icon">📅</span>
-                        <span>Turnos online</span>
-                    </div>
-                </motion.div>
-            </motion.section>
+        <div className="hero__actions">
+          <a className="btn btn--pink" href={whatsappUrl()} target="_blank" rel="noopener noreferrer">
+            <Icon name="whatsapp" />
+            Reservar por WhatsApp
+          </a>
+          <a className="btn btn--white" href="#servicios">
+            Ver servicios
+            <Icon name="arrow" />
+          </a>
         </div>
-    );
-};
+      </motion.div>
 
-export default Hero;
+      <motion.div
+        className="hero__media"
+        initial={{ opacity: 0, scale: 0.92, rotate: 4 }}
+        animate={{ opacity: 1, scale: 1, rotate: 0 }}
+        transition={{ duration: 0.55, ease: "easeOut", delay: 0.1 }}
+      >
+        <div className="photo-card">
+          <img
+            src={heroImg}
+            alt="Clienta sonriendo con el pelo suelto y brillante"
+            width={495}
+            height={941}
+            fetchPriority="high"
+            decoding="async"
+          />
+          <span className="photo-card__label">
+            <span className="dot" aria-hidden="true" />
+            Look listo para brillar
+          </span>
+        </div>
+
+        <span className="sticker sticker--yellow sticker--a">
+          <Icon name="bolt" size={16} /> Full glam
+        </span>
+        <span className="sticker sticker--white sticker--b">
+          <Icon name="heart" size={16} /> Clientas felices
+        </span>
+        <span className="sticker sticker--pink sticker--c">
+          <Icon name="calendar" size={16} /> Turnos online
+        </span>
+      </motion.div>
+    </section>
+  );
+}

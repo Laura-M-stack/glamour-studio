@@ -1,72 +1,34 @@
-import React from "react";
+import Icon from "./Icon";
+import SectionHeader from "./SectionHeader";
+import { TESTIMONIALS, salon } from "../config/salon";
 
-const TestimonialsSection: React.FC = () => {
+export default function TestimonialsSection() {
   return (
-    <section className="section" id="opiniones" aria-labelledby="opiniones-title">
-      <div className="section__header">
-        <div className="section__title-block">
-          <div className="section__eyebrow">Opiniones</div>
-          <h2 className="section__title" id="opiniones-title">
-            Clientas que ya brillan con Glamour
-          </h2>
-          <p className="section__subtitle">
-            Nos importa que te vayas feliz. Estas son algunas de las
-            experiencias de quienes ya pasaron por el salón.
-          </p>
-        </div>
-        <div className="section__tag">★★★★★</div>
+    <section className="section" id="opiniones" aria-labelledby="reviews-title">
+      <SectionHeader
+        id="reviews-title"
+        eyebrow="Opiniones"
+        title="Clientas que ya brillan"
+        subtitle="Nos importa que te vayas feliz. Esto cuentan quienes ya pasaron por el salón."
+      />
+
+      <div className="notes">
+        {TESTIMONIALS.map((t) => (
+          <figure key={t.name} className="note">
+            <div className="note__stars" aria-label="5 de 5 estrellas">
+              {Array.from({ length: 5 }, (_, i) => (
+                <Icon key={i} name="star" size={16} />
+              ))}
+            </div>
+            <blockquote className="note__text">“{t.text}”</blockquote>
+            <figcaption className="note__author">
+              <strong>{t.name}</strong> · {t.service}
+            </figcaption>
+          </figure>
+        ))}
       </div>
 
-      <div className="testimonials-grid">
-        <article className="testimonial-card">
-          <div className="testimonial-card__stars">★★★★★</div>
-          <p className="testimonial-card__text">
-            “Me hicieron exactamente el color que tenía en mente. Me escuchan,
-            aconsejan y el resultado fue mejor de lo que esperaba.”
-          </p>
-          <div className="testimonial-card__author">
-            <div>
-              <div className="testimonial-card__name">Mariana R.</div>
-              <div className="testimonial-card__detail">Color &amp; corte</div>
-            </div>
-            <span className="testimonial-card__detail">Cliente habitual</span>
-          </div>
-        </article>
-
-        <article className="testimonial-card">
-          <div className="testimonial-card__stars">★★★★★</div>
-          <p className="testimonial-card__text">
-            “Fui para un casamiento y el maquillaje me duró toda la noche,
-            incluso bailando. Súper prolijas y detallistas.”
-          </p>
-          <div className="testimonial-card__author">
-            <div>
-              <div className="testimonial-card__name">Luciana P.</div>
-              <div className="testimonial-card__detail">Makeup social</div>
-            </div>
-            <span className="testimonial-card__detail">Evento</span>
-          </div>
-        </article>
-
-        <article className="testimonial-card">
-          <div className="testimonial-card__stars">★★★★★</div>
-          <p className="testimonial-card__text">
-            “Las uñas quedaron perfectas y el spa de pies es un antes y un
-            después. Ambiente relajado y buena música.”
-          </p>
-          <div className="testimonial-card__author">
-            <div>
-              <div className="testimonial-card__name">Carolina G.</div>
-              <div className="testimonial-card__detail">
-                Manicuría &amp; spa
-              </div>
-            </div>
-            <span className="testimonial-card__detail">Primera visita</span>
-          </div>
-        </article>
-      </div>
+      {salon.isDemo && <p className="section__footnote">Reseñas de ejemplo para esta demo.</p>}
     </section>
   );
-};
-
-export default TestimonialsSection;
+}
