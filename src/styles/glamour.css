@@ -42,6 +42,8 @@ html {
 
 body {
   margin: 0;
+  /* La marquesina y los stickers rotados se asoman por los costados: sin esto, en celular aparece scroll horizontal */
+  overflow-x: clip;
   font-family: var(--font);
   font-size: 1rem;
   line-height: 1.6;
